@@ -1,0 +1,488 @@
+Public doc, z, c, v, n, q, u, o, a(1 To 10)
+Dim a1(1 To 10), x(1 To 10), y(1 To 10), xa(1 To 10), xb(1 To 10), xc(1 To 10), xd(1 To 10), xe(1 To 10), I, K As Integer
+Dim toch(2, 10), x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10 As Variant
+Dim D1, D2, D3, D4, D5 As Double
+Dim aTitleList(1 To 20) As String
+Dim aFieldsList(1 To 20, 1 To 20) As String
+
+
+Public Sub GetData()
+    a1(1) = UserForm1.TextBox1
+    a1(2) = UserForm1.TextBox2
+    a1(3) = UserForm1.TextBox3
+    a1(4) = UserForm1.TextBox4
+    a1(5) = UserForm1.TextBox5
+    a1(6) = UserForm1.TextBox6
+    a1(7) = UserForm1.TextBox7
+    a1(8) = UserForm1.TextBox8
+    a1(9) = UserForm1.TextBox9
+    a1(10) = UserForm1.TextBox10
+    
+    decision
+
+End Sub
+Public Sub GetDataForParAndPram()
+    a1(1) = UserForm1.TextBox1
+    a1(2) = UserForm1.TextBox2
+    a1(3) = UserForm1.TextBox3
+    a1(4) = UserForm1.TextBox4
+    a1(5) = UserForm1.TextBox5
+    a1(6) = UserForm1.TextBox6
+    a1(7) = UserForm1.TextBox7
+    a1(8) = UserForm1.TextBox8
+    a1(9) = UserForm1.TextBox9
+    a1(10) = UserForm1.TextBox10
+    
+    decisionForPar
+
+End Sub
+Public Sub decisionForPar() ' Функция построения точек для гиперболы
+For I = 1 To 10
+    x(I) = I - 5
+Next I
+For I = 1 To 10
+    y(I) = -7 / x(I) + 9
+Next I
+    decisionForPram
+End Sub
+Public Sub decisionForPram() ' Функция для расчетов точек построения прямых
+    For I = 1 To 10
+        xa(I) = (3 * a1(1) * x(I) + 2) / (5 * a1(2))
+    Next I
+    For I = 1 To 10
+        xb(I) = (4 * a1(3) * x(I) + 1) / (3 * a1(4))
+    Next I
+    For I = 1 To 10
+        xc(I) = (-2 * a1(5) * x(I) + 5) / (3 * a1(6))
+    Next I
+    For I = 1 To 10
+        xd(I) = (a1(7) * x(I) + 2) / (3 * a1(8))
+    Next I
+    For I = 1 To 10
+        xe(I) = (2 * a1(9) * x(I) + 5) / (3 * a1(10))
+    Next I
+End Sub
+Public Sub decision()
+If a1(1) = 0 Or a1(2) = 0 Then
+    toch(1, 1) = "Нет решения"
+    toch(1, 2) = "Нет решения"
+Else
+
+D1 = (2 - 45 * a1(2)) ^ 2 - 4 * 4 * a1(1) * 21 * a1(2) ' нахождение Дискриминанта
+
+If D1 < 0 Then
+    x1 = "нет точки"
+    x2 = "нет точки"
+    y1 = "Нет точки"
+    y2 = "Нет точки"
+ElseIf D1 = 0 Then
+    x1 = Round((-2 + 45 * a1(2)) / 2 * 3 * a1(1), 3)
+    y1 = Round(-7 / x1 + 9, 3)
+    
+Else
+    x1 = Round(((-2 + 45 * a1(2)) + Sqr(D1)) / 2 * 3 * a1(1), 3)
+    x2 = Round(((-2 + 45 * a1(2)) - Sqr(D1)) / 2 * 3 * a1(1), 3)
+    y1 = Round(-7 / x1 + 9, 3)
+    y2 = Round(-7 / x2 + 9, 3)
+    
+End If
+End If
+
+
+If a1(3) = 0 Or a1(4) = 0 Then
+    toch(1, 3) = "Нет решения"
+    toch(1, 4) = "Нет решения"
+Else
+    D2 = (1 - 27 * a1(4)) ^ 2 - 4 * 4 * a1(3) * 21 * a1(4) ' нахождение Дискриминанта
+If D2 < 0 Then
+    x3 = "нет точки"
+    x4 = "нет точки"
+    y3 = "Нет точки"
+    y4 = "Нет точки"
+ElseIf D2 = 0 Then
+    x3 = Round((-1 + 27 * a1(4)) / 2 * 4 * a1(3), 3)
+    
+    y3 = Round(-7 / x3 + 9, 3)
+    
+Else
+    x3 = Round(((-1 + 27 * a1(4)) + Sqr(D2)) / 2 * 4 * a1(3), 3)
+    
+    x4 = Round(((-1 + 27 * a1(4)) - Sqr(D2)) / 2 * 4 * a1(3), 3)
+    
+    y3 = Round(-7 / x3 + 9, 3)
+    
+    y4 = Round(-7 / x4 + 9, 3)
+    
+    
+End If
+End If
+
+
+If a1(5) = 0 Or a1(6) = 0 Then
+    toch(1, 5) = "Нет решения"
+    toch(1, 6) = "Нет решения"
+Else
+    D3 = ((27 * a1(6) - 5) ^ 2 + 4 * 2 * a1(5) * 21 * a1(6)) ' нахождение Дискриминанта
+If D1 < 0 Then
+    x5 = "нет точки"
+    x6 = "нет точки"
+    y5 = "Нет точки"
+    y6 = "Нет точки"
+ElseIf D3 = 0 Then
+    x5 = Round(((-27 * a1(6) + 5) + Sqr(D3)) / 2 * 2 * a1(5), 3)
+    
+    y5 = Round(-7 / x5 + 9, 3)
+    
+Else
+    x5 = Round(((-27 * a1(6) + 5) + Sqr(D3)) / 2 * 2 * a1(5), 3)
+    
+    x6 = Round(((-27 * a1(6) + 5) - Sqr(D3)) / 2 * 2 * a1(5), 3)
+   
+    y5 = Round(-7 / x5 + 9, 3)
+  
+    y6 = Round(-7 / x6 + 9, 3)
+    
+    
+End If
+End If
+
+    
+If a1(7) = 0 Or a1(8) = 0 Then
+    toch(1, 7) = "Нет решения"
+    toch(1, 8) = "Нет решения"
+Else
+    D4 = ((2 - 27 * a1(8)) ^ 2 - 4 * 21 * a1(8) * a1(7)) ' нахождение Дискриминанта
+If D4 < 0 Then
+    x7 = "нет точки"
+    x8 = "нет точки"
+    y7 = "Нет точки"
+    y8 = "Нет точки"
+ElseIf D4 = 0 Then
+    x7 = Round((-2 + 27 * a1(8)) / 2 * a1(7), 3)
+    
+    y7 = Round(-7 / x7 + 9, 3)
+    
+Else
+    x7 = Round(((-2 + 27 * a1(8)) + Sqr(D4)) / 2 * a1(7), 3)
+    
+    x8 = Round(((-2 + 27 * a1(8)) - Sqr(D4)) / 2 * a1(7), 3)
+    
+    y7 = Round(-7 / x7 + 9, 3)
+    
+    y8 = Round(-7 / x8 + 9, 3)
+   
+    
+End If
+End If
+
+
+If a1(9) = 0 Or a1(10) = 0 Then
+    toch(1, 9) = "Нет решения"
+    toch(1, 10) = "Нет решения"
+Else
+    D5 = ((5 - 27 * a1(10)) ^ 2 - 4 * 2 * a1(9) * 21 * a1(10)) ' нахождение Дискриминанта
+If D5 < 0 Then
+    x9 = "нет точки"
+    x10 = "нет точки"
+    y9 = "Нет точки"
+    y10 = "Нет точки"
+ElseIf D5 = 0 Then
+    x9 = Round(((27 * a1(10) - 5)) / 2 * 2 * a1(9), 3)
+    y9 = Round(-7 / x9 + 9, 3)
+Else
+    x9 = Round(((27 * a1(10) - 5) + Sqr(D5)) / 2 * 2 * a1(9), 3)
+    x10 = Round(((27 * a1(10) - 5) - Sqr(D5)) / 2 * 2 * a1(9), 3)
+    y9 = Round(-7 / x9 + 9, 3)
+    y10 = Round(-7 / x10 + 9, 3)
+    
+End If
+End If
+
+massiv
+End Sub
+
+Public Function massiv()
+' Присваивание точек
+toch(1, 1) = x1
+toch(1, 2) = x2
+toch(1, 3) = x3
+toch(1, 4) = x4
+toch(1, 5) = x5
+toch(1, 6) = x6
+toch(1, 7) = x7
+toch(1, 8) = x8
+toch(1, 9) = x9
+toch(1, 10) = x10
+toch(2, 1) = y1
+toch(2, 2) = y2
+toch(2, 3) = y3
+toch(2, 4) = y4
+toch(2, 5) = y5
+toch(2, 6) = y6
+toch(2, 7) = y7
+toch(2, 8) = y8
+toch(2, 9) = y9
+toch(2, 10) = y10
+
+MsgBox "Прямая пересекает Гиперболу в точках" & vbNewLine & "1 точка пересечения = " & "(" & toch(1, 1) & " ; " & toch(2, 1) & ")" & vbNewLine & "2 точка пересечения = " & "(" & toch(1, 2) & " ; " & toch(2, 2) & ")" & vbNewLine & "3 точка пересечения = " & "(" & toch(1, 3) & " ; " & toch(2, 3) & ")" & vbNewLine & "4 точка пересечения = " & "(" & toch(1, 4) & " ; " & toch(2, 4) & ")" & vbNewLine & "5 точка пересечения = " & "(" & toch(1, 5) & " ; " & toch(2, 5) & ")" & vbNewLine & "6 точка пересечения = " & "(" & toch(1, 6) & " ; " & toch(2, 6) & ")" & vbNewLine & "7 точка пересечения = " & "(" & toch(1, 7) & " ; " & toch(2, 7) & ")" & vbNewLine & "8 точка пересечения = " & "(" & toch(1, 8) & " ; " & toch(2, 8) & ")" & vbNewLine & "9 точка пересечения = " & "(" & toch(1, 9) & " ; " & toch(2, 9) & ")" & vbNewLine & "10 точка пересечения = " & "(" & toch(1, 10) & " ; " & toch(2, 10) & ")"
+
+End Function
+
+Public Sub zagruzka()
+
+    a(1) = UserForm1.TextBox1
+    a(2) = UserForm1.TextBox2
+    a(3) = UserForm1.TextBox3
+    a(4) = UserForm1.TextBox4
+    a(5) = UserForm1.TextBox5
+    a(6) = UserForm1.TextBox6
+    a(7) = UserForm1.TextBox7
+    a(8) = UserForm1.TextBox8
+    a(9) = UserForm1.TextBox9
+    a(10) = UserForm1.TextBox10
+    
+
+Dim temppath As String
+Set doc = CreateNewWordDocument(temppath) ' создаем новый документ
+With doc
+    .PageSetup.TopMargin = CentimetersToPoints(2)
+    .PageSetup.BottomMargin = CentimetersToPoints(1.5)
+End With
+    doc.Styles("заголовок 1").Font.Size = "14"
+    doc.Styles("заголовок 1").Font.Name = "times new roman"
+    doc.Styles("обычный").Font.Size = "12"
+    doc.Styles("обычный").Font.Name = "times new roman"
+    doc.Styles("заголовок 1").ParagraphFormat.Alignment = 3
+    doc.Styles("обычный").ParagraphFormat.Alignment = 3
+    doc.Styles("Заголовок 1").Font.Bold = False
+    doc.Activate
+
+par
+
+End Sub
+
+Public Sub par()
+   
+    Set z = AddNewParagraphRange(doc.Range)
+    Set c = AddNewParagraphRange(doc.Range)
+    Set v = AddNewParagraphRange(doc.Range)
+    Set n = AddNewParagraphRange(doc.Range)
+    Set q = AddNewParagraphRange(doc.Range)
+    Set u = AddNewParagraphRange(doc.Range)
+    Set o = AddNewParagraphRange(doc.Range)
+    Set z = WriteParagraphLn(z, "1. Условие задания", "Заголовок 1")
+    Set c = WriteParagraphLn(c, FirstTable, "Обычный")
+    Call InsertTableConstructor(c, 10, 2, aTitleList, aFieldsList)
+    Set v = WriteParagraphLn(v, "2. Ход решения", "Заголовок 1")
+    Set n = WriteParagraphLn(n, vbNewLine & "x*(y-9)+7=0" & vbNewLine & "1. " & a(1) & "*3x-5*" & a(2) & "*y+2=0" & vbNewLine & "2. " & "4*" & a(3) & "*x-3*" & a(4) & "*y+1=0" & vbNewLine & "3. " & "2*" & a(5) & "*x+3*" & a(6) & "*y-5=0" & vbNewLine & "4. " & a(7) & "*x-3*" & a(8) & "*y+2=0" & vbNewLine & "5. " & "2*" & a(9) & "*x-3*" & a(10) & "*y+5=0", StyleName)
+    Set q = WriteParagraphLn(q, "3. Результаты решения", "Заголовок 1")
+    Call InsertDiagramIntoDoc(IntoRange, TitleList, NeedLegend)
+    Set u = WriteParagraphLn(u, vbNewLine & SecondTable, StyleName)
+    Call InsertTableConstructor(u, 3, 11, aTitleList, aFieldsList)
+    Set o = WriteParagraphLn(u, text, StyleName)
+    
+End Sub
+
+'функция для создания надписи в документе word в диапазон
+Public Function WriteParagraphLn(ARange, text, StyleName) As Range
+Dim stpos As Long ' обьявление переменной
+stpos = ARange.End 'запоминает ссылку на конец диапазона
+If Len(ARange) <= 2 Then 'есть ли текст в диапазоне
+    ARange.InsertAfter text  'ввод текста в диапазон
+Else
+    ARange.InsertParagraphAfter 'иначе ввод пустого абзаца после текста
+    ARange.InsertAfter text
+End If
+    If StyleName <> "Заголовок 1" Then ARange.Document.Range(stpos, ARange.End).Style = "Обычный" Else ARange.Document.Range(stpos, ARange.End).Style = "Заголовок 1" 'задаем стиль
+
+Set WriteParagraphLn = ARange.Document.Range(stpos, ARange.End) 'присваиваем функции измененный диапазон с отформатированным текстом
+End Function
+
+
+'Функция для создания параграфов в документе Word
+Public Function AddNewParagraphRange(ARange)
+Dim NewParagraph
+Dim NewRange
+Dim I As Integer
+    I = ARange.Paragraphs.Count ' Счетчик для разделов
+    ARange.InsertParagraphAfter
+    Set NewRange = ARange.Paragraphs(I).Range
+    NewRange.StartOf wdWord, wdMove
+    Set AddNewParagraphRange = NewRange
+End Function
+Public Function FirstTable() 'таблица со значениями введеных данных
+For I = 1 To 10
+        aTitleList(I) = "a" & I
+        aFieldsList(1, I) = a(I)
+    Next I
+End Function
+Public Function SecondTable() 'таблица со значениями введеных данных
+    aTitleList(1) = "Точка пересечения"
+    aTitleList(2) = "Х"
+    aTitleList(3) = "У"
+    For I = 1 To 10
+        aFieldsList(I, 1) = I
+        aFieldsList(I, 2) = toch(1, I)
+        aFieldsList(I, 3) = toch(2, I)
+    Next I
+        
+End Function
+
+
+
+Public Function AddTableIntoRange(IntoRange, NumCols, NumRows, Autofit) 'функция добавления таблицы(методичка)
+Dim rngRange
+Dim RR As Range
+    If Len(IntoRange) > 2 Then
+        IntoRange.InsertAfter " "
+        Set rngRange = IntoRange.Document.Range(IntoRange.End - 1, IntoRange.End - 1)
+    Else
+        Set rngRange = IntoRange.Document.Range(IntoRange.Start, IntoRange.Start)
+    End If
+Dim T
+    Set T = rngRange.Tables.Add(rngRange, NumRows, NumCols)
+If Autofit Then T.AutoFitBehavior wdAutoFitContent
+T.Range.Style = "Обычный"
+    IntoRange.Paragraphs.Last.Style = "Обычный"
+    T.Borders(wdBorderLeft).LineStyle = False ' Создание границ таблицы
+    T.Borders(wdBorderBottom).LineStyle = False ' Создание границ таблицы
+    T.Borders(wdBorderRight).LineStyle = False ' Создание границ таблицы
+    T.Borders(wdBorderTop).LineStyle = False ' Создание границ таблицы
+    T.Borders(wdBorderHorizontal).LineStyle = False ' Создание границ таблицы
+    T.Borders(wdBorderVertical).LineStyle = False ' Создание границ таблицы
+    
+    Set AddTableIntoRange = T
+End Function
+Public Sub InsertTableConstructor(rng, ColNum, StrNum, TitleList, FieldsList)
+Dim T
+Dim I, J As Integer
+Set T = AddTableIntoRange(rng, ColNum, 1, False)
+'вставляем заголовок
+For I = 1 To ColNum
+    WriteParagraphLn T.Cell(1, I).Range, TitleList(I), "Обычный"
+Next I
+J = 1 'начнём с первой строки
+Do
+T.Rows.Add 'новая строка
+For I = 1 To ColNum 'заполнение данными строки
+    WriteParagraphLn T.Cell(J + 1, I).Range, FieldsList(J, I), "Обычный"
+Next I
+J = J + 1
+Loop Until J = StrNum 'при вызове процедуры надо учесть сдвиг на 1 на заголовок таблицы
+' выравнивание
+T.AutoFitBehavior wdAutoFitWindow
+End Sub
+
+'создание диаграммы для пересечения гиперболы и пяти прямых
+Public Sub InsertDiagramIntoDoc(IntoRange, TitleList, NeedLegend)
+Dim ColNum, RowNum As Integer
+ColNum = 30
+RowNum = 5
+Dim VAY
+Set VAY = doc.Range
+Set VAY = doc.Range(VAY.End - 1, VAY.End)
+Dim TitlesList(5) As String
+TitlesList(0) = "гипербола"
+TitlesList(1) = "Прямая 1"
+TitlesList(2) = "Прямая 2"
+TitlesList(3) = "Прямая 3"
+TitlesList(4) = "Прямая 4"
+TitlesList(5) = "Прямая 5"
+
+I = 0
+Dim sup As Integer
+Dim FieldsList(6, 30) As Currency
+For x0 = -10 To 20 Step 1
+    FieldsList(0, I) = x0
+If x0 <> 0 Then
+    FieldsList(1, I) = (7 - x0) / x0
+Else
+    sup = I
+End If
+If D1 <> 0 Then FieldsList(2, I) = (3 * a(1) * x0 + 2) / (5 * a(2)) 'прямая 1
+If D2 <> 0 Then FieldsList(3, I) = (4 * a(3) * x0 + 1) / (3 * a(4)) 'прямая 2
+If D3 <> 0 Then FieldsList(4, I) = -(2 * a(5) * x0 - 5) / (3 * a(6)) 'прямая 3
+If D4 <> 0 Then FieldsList(5, I) = (a(7) * x0 + 2) / (3 * a(8)) 'прямая 4
+If D5 <> 0 Then FieldsList(6, I) = (2 * a(9) + 5) / (3 * a(10)) 'прямая 5
+
+
+I = I + 1
+Next x0
+If D1 = 0 Then
+    FieldsList(2, 0) = -c(0) / toch(0, 0)
+    FieldsList(2, 1) = -c(0) / toch(0, 0)
+End If
+
+If D2 = 0 Then
+    FieldsList(3, 0) = -c(1) / toch(1, 0)
+    FieldsList(3, 1) = -c(1) / toch(1, 0)
+End If
+
+If D3 = 0 Then
+    FieldsList(4, 0) = -c(2) / toch(2, 0)
+    FieldsList(4, 1) = -c(2) / toch(2, 0)
+End If
+
+If D4 = 0 Then
+    FieldsList(5, 0) = -c(3) / toch(3, 0)
+    FieldsList(5, 1) = -c(3) / toch(3, 0)
+End If
+
+If D5 = 0 Then
+    FieldsList(6, 0) = -c(4) / toch(3, 0)
+    FieldsList(6, 1) = -c(4) / toch(3, 0)
+End If
+
+Dim obj As Object ' исключаем пустой диапазон
+VAY.InsertAfter " "
+If VAY.ShapeRange.Count <> 0 Then ' проверяем тип размещения диаграммы
+    VAY.ShapeRange(1).OLEFormat.Activate
+    Set obj = VAY.ShapeRange(1).OLEFormat.Object
+Else
+    VAY.InlineShapes.AddOLEObject ClassType:="MSGraph.Chart.8", FileName:="", LinkToFile:=False, DisplayAsIcon:=False
+    VAY.InlineShapes(1).OLEFormat.Activate
+    Set obj = VAY.InlineShapes.Item(1).OLEFormat.Object
+End If
+
+obj.ChartType = xl3DLine
+obj.HasLegend = True
+obj.Height = 500
+obj.Width = 250
+With obj.Application.datasheet
+
+' заливаем заголовки
+For I = 2 To RowNum + 1
+    obj.ChartTitle.Application.datasheet.Cells(I, 1) = TitlesList(I - 2)
+Next I
+
+' заливаем контент
+obj.ChartArea.AutoScaleFont = False
+obj.ChartArea.Font.Bold = False
+obj.ChartArea.Font.Size = 12
+obj.ChartArea.Font.ColorIndex = 0
+For I = 1 To 5
+    For J = 2 To 6
+        .Cells(I, J) = ""
+    Next J
+Next I
+For I = 1 To RowNum + 1
+If I > 2 And FieldsList(I - 1, 0) = FieldsList(I - 1, 1) Then
+    .Cells(1, 2 * (I - 2)) = FieldsList(I - 1, 0)
+    .Cells(1, 2 * (I - 2) + 1) = FieldsList(I - 1, 1)
+    .Cells(I, 2 * (I - 2)) = -50
+    .Cells(I, 2 * (I - 2) + 1) = 100
+
+Else
+    For J = 12 To ColNum + 11
+        .Cells(I, J) = FieldsList(I - 1, J - 12)
+    Next J
+End If
+    Next I
+    .Cells(2, sup + 12) = ""
+End With
+
+End Sub
+
+
+
+
